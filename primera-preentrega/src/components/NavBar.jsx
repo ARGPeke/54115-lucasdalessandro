@@ -1,3 +1,4 @@
+import { Link, NavLink, } from "react-router-dom";
 import logo from "../assets/images/logo-boca.png";
 import CartWidget from "./CartWidget";
 
@@ -7,9 +8,9 @@ const NavBar = () => {
             <div className="row bg-primary p-3">
                 <div className="col"></div>
                 <div className="col m-2 text-center">        
-                    <a href="#"> 
+                    <Link to={'/'}>
                         <img src={logo} alt="BOCA" width={200}/>
-                    </a>
+                        </Link>
                 </div>
                 <div className="col d-flex align-items-center justify-content-end">
                     <CartWidget />
@@ -19,16 +20,16 @@ const NavBar = () => {
                 <div className="col">
                   <ul className="nav justify-content-center">
                     <li className="nav-item">
-                        <a className="nav-link active text-light" aria-current="page" href="#" style={{fontSize:"20px", fontWeight:"bold"}}>Futbol</a>
+                        <NavLink to={'/categoria/futbol'} className="nav-link text-light" activeclassname="active"  style={{fontSize:"20px", fontWeight:"bold"}}>Futbol</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-light" href="#" style={{fontSize:"20px", fontWeight:"bold"}}>Basquet</a>
+                        <NavLink  to={'/categoria/basquet'} className="nav-link text-light"  activeclassname="active" style={{fontSize:"20px", fontWeight:"bold"}}>Basquet</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-light" href="#" style={{fontSize:"20px", fontWeight:"bold"}}>Entrenamiento</a>
+                        <NavLink to={'/categoria/entrenamiento'} className="nav-link text-light"   activeclassname="active" style={{fontSize:"20px", fontWeight:"bold"}}>Entrenamiento</NavLink>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-light" href="#" style={{fontSize:"20px", fontWeight:"bold"}}>Accesorios</a>
+                        <NavLink to={'/categoria/libre'} className="nav-link text-light"   activeclassname="active"style={{fontSize:"20px", fontWeight:"bold"}}>Tiempo Libre</NavLink>
                     </li>
                 </ul>
                 </div>

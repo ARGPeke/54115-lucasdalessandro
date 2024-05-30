@@ -1,19 +1,21 @@
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import {collection, getDocs, getFirestore, query, where} from "firebase/firestore"
-import Loading from "./Loading";
 import Carousel from "./Carousel";
+import Loading from "./Loading";
 
-        const ItemListContainer = () => {
-            const [items, setItems] = useState ([]);
+
+
+const Hombres = () => { 
+        const [items, setItems] = useState ([]);
             const [visible, setVisible] = useState(true);
             const {id} = useParams();
 
         useEffect (()=> {
             const db = getFirestore();
             const itemsCollection = collection(db, "items");
-            const queryCollection = id ? query(itemsCollection, where("categoria", "==", id)) : itemsCollection;
+            const queryCollection = query(itemsCollection, where("genero", "==", "masculino"));
             getDocs(queryCollection).then(snapShot => {
                 if (snapShot.size > 0){
                 setItems(snapShot.docs.map(item=>({id:item.id, ...item.data()})));
@@ -21,8 +23,8 @@ import Carousel from "./Carousel";
             }
         })
     }, []);
-            
-        return (
+
+    return (
         <>
             {id ? "" : <Carousel/>}
             <div className="container mt-5">
@@ -34,4 +36,4 @@ import Carousel from "./Carousel";
     )
 }
 
-export default ItemListContainer;
+export default Hombres;
